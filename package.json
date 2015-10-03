@@ -1,0 +1,62 @@
+{
+  "name": "pipeline-build-js",
+  "version": "0.1.0-SNAPSHOT",
+  "description": "Gulp pipeline to run tests locally using node and mocha",
+  "author": "Juan P. Osorio <jposorio@kenzan.com> (https://github.com/jpoo90)",
+  "contributors": [
+    {
+      "name": "Owen Buckley",
+      "email": "obuckley@kenzan.com"
+    },
+    {
+      "name": "Chris Sharon",
+      "email": "csharon@kenzan.com"
+    }
+  ],
+  "scripts": {
+    "test": "mocha test/index.spec.js -w"
+  },
+  "main": "src/index.js",
+  "repository": {
+    "type": "git",
+    "url": "ssh://git@github.com:kenzanmedia/pipeline-build-js.git"
+  },
+  "keywords": [
+    "Gulp",
+    "Tools",
+    "Keystone",
+    "Pipeline"
+  ],
+  "preferGlobal": false,
+  "private": false,
+  "publishConfig": {
+    "registry": ""
+  },
+  "engines": {
+    "node": ">=0.10.3",
+    "npm": ">=1.0.20"
+  },
+  "analyze": true,
+  "license": "ISC",
+  "dependencies": {
+    "chai": "3.3.0",
+    "gulp": "3.9.0",
+    "gulp-concat": "2.6.0",
+    "gulp-if": "2.0.0",
+    "gulp-load-plugins": "0.10.0",
+    "gulp-plumber": "1.0.1",
+    "gulp-print": "2.0.1",
+    "gulp-rename": "1.2.2",
+    "gulp-sourcemaps": "1.6.0",
+    "gulp-uglify": "1.4.1",
+    "lazypipe": "1.0.1",
+    "mocha": "2.3.3",
+    "pipeline-handyman": "git+ssh://git@github.com/kenzanmedia/pipeline-handyman.git#aeb41b4423ca07d5bab17ce28e6bdfb1b4e7b364",
+    "pipeline-validate-js": "git+ssh://git@github.com/kenzanmedia/pipeline-validate-js.git#55c0ec3a51799e83d4748ffbb700687fb818b8f5",
+    "yargs": "3.26.0"
+  },
+  "devDependencies": {
+    "path": "0.12.7",
+    "stream-assert": "2.0.3"
+  }
+}
