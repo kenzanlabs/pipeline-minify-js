@@ -1,7 +1,7 @@
 {
-  "name": "pipeline-build-js",
+  "name": "pipeline-minify-js",
   "version": "0.1.0-SNAPSHOT",
-  "description": "Gulp pipeline to run tests locally using node and mocha",
+  "description": "Gulp pipeline to concatenate and minify js files",
   "author": "Juan P. Osorio <jposorio@kenzan.com> (https://github.com/jpoo90)",
   "contributors": [
     {
@@ -19,13 +19,14 @@
   "main": "src/index.js",
   "repository": {
     "type": "git",
-    "url": "ssh://git@github.com:kenzanmedia/pipeline-build-js.git"
+    "url": "ssh://git@github.com:kenzanmedia/pipeline-minify-js.git"
   },
   "keywords": [
     "Gulp",
     "Tools",
     "Keystone",
-    "Pipeline"
+    "Pipeline",
+    "Minify"
   ],
   "preferGlobal": false,
   "private": false,
