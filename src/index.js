@@ -9,7 +9,7 @@ var lazypipe = require('lazypipe');
 var plugins = require('gulp-load-plugins')({lazy: true});
 
 var config = {
-  concatenate: true,
+  concatenate: false,
   output: 'dist/'
 };
 
@@ -43,7 +43,6 @@ function buildPipeline(options) {
   }
 
   function concatJS() {
-    console.log(config.concatenate);
     var bypass = lazypipe();
     var concat = lazypipe()
       .pipe(plugins.concat, 'build.js')
