@@ -1,7 +1,7 @@
 {
   "name": "pipeline-minify-js",
   "version": "0.1.0-SNAPSHOT",
-  "description": "Gulp pipeline to concatenate and minify js files",
+  "description": "Gulp pipeline to minify and optionally concatenate js files",
   "author": "Juan P. Osorio <jposorio@kenzan.com> (https://github.com/jpoo90)",
   "contributors": [
     {

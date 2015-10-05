@@ -10,7 +10,7 @@
 # Overview
 
 
-_repo_: `ssh:git@github.com:kenzanmedia/pipeline-minify-js.git`
+_repo_: `https://github.com/kenzanmedia/pipeline-minify-js/`
 
 _jenkins_: `TODO`
 
