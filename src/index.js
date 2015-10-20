@@ -9,8 +9,8 @@ var lazypipe = require('lazypipe');
 var plugins = require('gulp-load-plugins')({lazy: true});
 
 var config = {
-  concatenate: false,
-  output: 'dist/'
+  concat: true,
+  output: 'dest/'
 };
 
 module.exports = buildPipeline;
@@ -30,10 +30,9 @@ function buildPipeline(options) {
   function minifyJS() {
 
     return lazypipe()
-      .pipe(function() {
+      .pipe(function () {
         return plugins.if(args.verbose, plugins.print());
       })
-      .pipe(plugins.plumber)
       .pipe(plugins.sourcemaps.init)
       .pipe(concatJS())
       .pipe(plugins.uglify)
@@ -48,6 +47,6 @@ function buildPipeline(options) {
       .pipe(plugins.concat, 'build.js')
       .pipe(gulp.dest, config.output);
 
-    return config.concatenate ? concat : bypass;
+    return config.concat ? concat : bypass;
   }
 }
