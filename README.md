@@ -18,6 +18,7 @@ _jenkins_: `TODO`
 `npm install git+ssh:git@github.com:kenzanmedia/pipeline-minify-js.git`
 
 ## Usage
+
 ```javascript
 var gulp = require('gulp');
 var minifyPipeline = require('pipeline-minify-js')();
@@ -35,7 +36,7 @@ gulp.task('default', function() {
 Pipeline options:
 * _config_ -> Object that contains the configuration.
 
-    + __config.concatenate:__ If _true_ the pipeline will concatenate the files, hence it will generate a js file with all of the files concatenated.
+    + __config.concat:__ If _false_ the pipeline won't concatenate the files
 
     + __config.output:__ Sets the path to output the concatenate and minify files.
 

@@ -9,9 +9,12 @@ var assert = require('stream-assert');
 var fixtures = function (glob) { return path.join(__dirname, 'fixtures', glob); };
 
 describe('pipeline-minify-js', function() {
-  describe('Pipeline functionality', function() {
-    it('Should output two files if concatenate is true', function (done) {
-      gulp
+
+  describe('Pipeline concat functionality', function() {
+    it('Should output two files if concat is true with sourcemaps', function (done) {
+
+      //TODO should test file name
+      return gulp
         .src(fixtures('*'))
         .pipe(minifyPipeline().minifyJS())
         .pipe(assert.length(2))
@@ -19,10 +22,10 @@ describe('pipeline-minify-js', function() {
 
     });
 
-    it('Should output one file if concatenate is false', function (done) {
-      gulp
+    it('Should output four files if concat is false with sourcemaps', function (done) {
+      return gulp
         .src(fixtures('*'))
-        .pipe(minifyPipeline({concatenate: false}).minifyJS())
+        .pipe(minifyPipeline({concat: false}).minifyJS())
         .pipe(assert.length(4))
         .pipe(assert.end(done));
     });

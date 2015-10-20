@@ -4,6 +4,7 @@
 var gulp = require('gulp');
 var buildPipeline = require('./src/index.js')();
 var validatePipeline = require('pipeline-validate-js')();
+var testPipeline = require('pipeline-test-node')();
 
 var config = {
   files: [
@@ -12,7 +13,12 @@ var config = {
   ]
 };
 
-gulp.task('default', function() {
+gulp.task('test', function (){
+  gulp.src(config.files)
+    .pipe(testPipeline.test());
+});
+
+gulp.task('build', ['test'], function() {
   return gulp
     .src(config.files)
     .pipe(validatePipeline.validateJS())
