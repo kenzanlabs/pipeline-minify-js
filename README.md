@@ -35,7 +35,7 @@ gulp.task('default', function() {
 Pipeline options:
 * _config_ -> Object that contains the configuration.
 
-    + __config.concatenate:__ If _true_ the pipeline will concatenate the files, hence it will generate a js file with all of the files concatenated.
+    + __config.concat:__ If _true_ the pipeline will concatenate the files, hence it will generate a js file with all of the files concatenated.
 
     + __config.output:__ Sets the path to output the concatenate and minify files.
 
@@ -43,9 +43,9 @@ Pipeline options:
   Default:
   ```javascript
   config = {
-        concatenate: false,
-        output: 'dist/'  
-      }
+    concat: false,
+    output: 'dist/'  
+  }
   ```  
 
 ## Results
