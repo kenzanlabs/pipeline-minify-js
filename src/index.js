@@ -1,6 +1,6 @@
 'use strict';
 
-//var concat = require('gulp-concat');
+var concat = require('gulp-concat');
 var gulp = require('gulp');
 var handyman = require('pipeline-handyman');
 var lazypipe = require('lazypipe');
@@ -39,12 +39,14 @@ function buildPipeline(options) {
 
   function concatJS() {
     var bypass = lazypipe();
-    var concat = lazypipe()
+    var concatPipe = lazypipe()
       .pipe(concat, 'build.js')
       .pipe(gulp.dest, config.output);
 
     console.log(concat);
 
-    return config.concat ? concat : bypass;
+    return config.concat ? concatPipe : bypass;
   }
 }
+
+//.pipe(gulp.dest, config.output);
