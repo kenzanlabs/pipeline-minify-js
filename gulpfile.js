@@ -1,20 +1,35 @@
-
 'use strict';
 
+var del = require('del');
 var gulp = require('gulp');
-var buildPipeline = require('./src/index.js')();
+var minifyPipeline = require('./src/index.js')();
+var testPipeline = require('pipeline-test-node')();
 var validatePipeline = require('pipeline-validate-js')();
 
 var config = {
-  files: [
-   'src/**/*.js',
-   'test/**/*.js'
+  jsFiles: [
+    '*/.js',
+    'src/**/*.js',
+    'test/**/*.js'
   ]
 };
 
-gulp.task('default', function() {
+gulp.task('clean', function () {
+  return del.sync([
+    './dest/**'
+  ]);
+});
+
+gulp.task('validate', function() {
   return gulp
-    .src(config.files)
+    .src(config.jsFiles)
     .pipe(validatePipeline.validateJS())
-    .pipe(buildPipeline.minifyJS());
+    .pipe(testPipeline.test());
+});
+
+gulp.task('build', ['clean', 'validate'] , function() {
+
+  return gulp
+    .src(config.jsFiles)
+    .pipe(minifyPipeline.minifyJS());
 });

@@ -1,4 +1,4 @@
-## Pipeline-minify-js
+## pipeline-minify-js
 
 
 ## Information
@@ -35,17 +35,27 @@ gulp.task('default', function() {
 Pipeline options:
 * _config_ -> Object that contains the configuration.
 
-    + __config.concatenate:__ If _true_ the pipeline will concatenate the files, hence it will generate a js file with all of the files concatenated.
+  * __addSourceMaps:__ If set to __false__ source maps won't be generated for the compile files. By default the pipeline will generate the source maps and store them in _maps_.
 
-    + __config.output:__ Sets the path to output the concatenate and minify files.
+  * __concat:__ If _false_ the pipeline won't concatenate the files into a single generated file
+
+  * __concatFilename:__ Sets the filename of the concatenated files.
+    
+  * __concatOutput:__ Sets the path to where the sourcemaps are written to
+    
+  * __uglify:__ Uglifies JS files using the basic [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) configuration.
+    
 
 
   Default:
   ```javascript
   config = {
-        concatenate: false,
-        output: 'dist/'  
-      }
+    addSourceMaps: true,
+    concat: true,
+    concatFilename: '{package-name}.min.js',
+    concatOutput: 'dest/',
+    uglify: {}  //default options
+  }
   ```  
 
 ## Results

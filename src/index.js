@@ -1,25 +1,28 @@
-/*global require, module */
-
 'use strict';
 
-var args = require('yargs').argv;
+var concat = require('gulp-concat');
+var gulpIf = require('gulp-if');
 var handyman = require('pipeline-handyman');
-var gulp = require('gulp');
 var lazypipe = require('lazypipe');
-var plugins = require('gulp-load-plugins')({lazy: true});
+var sourcemaps = require('gulp-sourcemaps');
+var uglify = require('gulp-uglify');
 
 var config = {
-  concatenate: false,
-  output: 'dist/'
+  addSourceMaps: true,
+  concat: true,
+  concatFilename: handyman.getPackageName() + '.min.js',
+  concatOutput: './dest/',
+  plugins: {
+    uglify: {}
+  }
 };
 
 module.exports = buildPipeline;
 
 function buildPipeline(options) {
 
-  if (config) {
-    config = handyman.updateConf(config, options);
-  }
+  options = options || {};
+  config = handyman.mergeConf(config, options);
 
   var pipeline = {
     minifyJS: minifyJS()
@@ -28,26 +31,17 @@ function buildPipeline(options) {
   return pipeline;
 
   function minifyJS() {
-
     return lazypipe()
-      .pipe(function() {
-        return plugins.if(args.verbose, plugins.print());
+      .pipe(function () {
+        return gulpIf(config.addSourceMaps, sourcemaps.init());
       })
-      .pipe(plugins.plumber)
-      .pipe(plugins.sourcemaps.init)
-      .pipe(concatJS())
-      .pipe(plugins.uglify)
-      .pipe(plugins.rename, 'build.min.js')
-      .pipe(plugins.sourcemaps.write, './')
-      .pipe(gulp.dest, config.output);
-  }
-
-  function concatJS() {
-    var bypass = lazypipe();
-    var concat = lazypipe()
-      .pipe(plugins.concat, 'build.js')
-      .pipe(gulp.dest, config.output);
-
-    return config.concatenate ? concat : bypass;
+      .pipe(uglify, config.plugins.uglify)
+      .pipe(function () {
+        return gulpIf(config.concat, concat(config.concatFilename));
+      })
+      .pipe(function () {
+        return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
+      });
   }
 }
+
