@@ -5,7 +5,7 @@
 
 | Package       | Description   | Version|
 | ------------- |:-------------:| -----:|
-| Pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 0.1.0 |
+| Pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 0.2.0 |
 
 # Overview
 
