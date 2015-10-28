@@ -1,4 +1,4 @@
-## Pipeline-minify-js
+## pipeline-minify-js
 
 
 ## Information
