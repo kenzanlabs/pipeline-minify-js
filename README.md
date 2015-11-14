@@ -5,17 +5,18 @@
 
 | Package       | Description   | Version|
 | ------------- |:-------------:| -----:|
-| Pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 0.2.0 |
+| pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 0.2.0 |
 
 # Overview
 
+Gulp pipeline for minifiying JS and optionally concatenating the output.
 
-_repo_: `https://github.com/kenzanmedia/pipeline-minify-js/`
-
-_jenkins_: `TODO`
+**NOTE: as this project is still pre 1.0.0, it is subject to possible backwards incompatible changes as it matures.
+Also, as part of a repo migration, version 0.2.0 will not install, so please use any of the newer versions**
 
 ## Install
-`npm install git+ssh:git@github.com:kenzanmedia/pipeline-minify-js.git`
+
+`npm install git://github.com/kenzanlabs/pipeline-minify-js.git --save-dev`
 
 ## Usage
 ```javascript
@@ -65,7 +66,7 @@ This pipeline returns an object. This object receives a stream with the files to
 
 
 ## LICENSE
-Copyright 2015 Kenzan
+Copyright 2015 Kenzan, LLC <http://kenzan.com>
 
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
