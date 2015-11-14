@@ -54,7 +54,7 @@
     "del": "2.0.2",
     "gulp": "3.9.0",
     "path": "0.12.7",
-    "pipeline-test-node": "git+ssh://git@github.com/kenzalabs/pipeline-test-node.git#0.3.0",
+    "pipeline-test-node": "git+ssh://git@github.com/kenzanlabs/pipeline-test-node.git#0.3.0",
     "pipeline-validate-js": "git+ssh://git@github.com/kenzanlabs/pipeline-validate-js.git#0.2.0",
     "stream-assert": "2.0.3"
   }
