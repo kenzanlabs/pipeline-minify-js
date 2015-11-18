@@ -16,7 +16,7 @@ Also, as part of a repo migration, version 0.2.0 will not install, so please use
 
 ## Install
 
-`npm install git://github.com/kenzanlabs/pipeline-minify-js.git --save-dev`
+`npm install pipeline-minify-js --save-dev`
 
 ## Usage
 ```javascript
