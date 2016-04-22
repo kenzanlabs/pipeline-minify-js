@@ -19,16 +19,16 @@ var config = {
 
 module.exports = {
   minifyJS: function(options) {
-    if(options) {
+    if (options) {
       handyman.log('Minifying with custom options');
       config = handyman.mergeConf(config, options);
     }
 
-    return  minifyJS();
+    return minifyJS();
   }
 };
 
-function minifyJS(){
+function minifyJS() {
   var pipeline = makePipe();
 
   return pipeline;
