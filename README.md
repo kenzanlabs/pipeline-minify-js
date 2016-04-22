@@ -21,13 +21,22 @@ Also, as part of a repo migration, version 0.2.0 will not install, so please use
 ## Usage
 ```javascript
 var gulp = require('gulp');
-var minifyPipeline = require('pipeline-minify-js')();
+var minifyPipeline = require('pipeline-minify-js');
 
 
 gulp.task('default', function() {
   return gulp
     .src(['src/**/*.js'])
-    .pipe(minifyPipeline.minifyJS());
+    .pipe(minifyPipeline.minifyJS())
+    .pipe(gulp.dest('dist'));
+});
+
+// task with options
+gulp.task('optns', function() {
+  return gulp
+    .src(['src/**/*.js'])
+    .pipe(minifyPipeline.minifyJS({concat: false}))
+    .pipe(gulp.dest('dist'));
 });
 ```
 
