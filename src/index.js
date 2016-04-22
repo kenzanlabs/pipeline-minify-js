@@ -20,10 +20,10 @@ var config = {
 module.exports = {
   minifyJS: function(options) {
     if(options) {
-      options = options || {};
+      handyman.log('Minifying with custom options');
       config = handyman.mergeConf(config, options);
     }
-    
+
     return  minifyJS();
   }
 };
