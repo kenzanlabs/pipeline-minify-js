@@ -33,7 +33,7 @@ gulp.task('default', function() {
 ```
 
 ## Options
-Options will be passed as an object on minifyJS(), ex: minifyPipeline.minifyJS({concat: false});
+Options will be passed as an object on minifyJS(), ex: _minifyPipeline.minifyJS({concat: false})_;
 
 Pipeline options:
 * _config_ -> Object that contains the configuration.
