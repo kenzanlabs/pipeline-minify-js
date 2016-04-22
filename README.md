@@ -30,17 +30,10 @@ gulp.task('default', function() {
     .pipe(minifyPipeline.minifyJS())
     .pipe(gulp.dest('dist'));
 });
-
-// task with options
-gulp.task('optns', function() {
-  return gulp
-    .src(['src/**/*.js'])
-    .pipe(minifyPipeline.minifyJS({concat: false}))
-    .pipe(gulp.dest('dist'));
-});
 ```
 
 ## Options
+Options will be passed as an object on minifyJS(), ex: minifyPipeline.minifyJS({concat: false});
 
 Pipeline options:
 * _config_ -> Object that contains the configuration.
