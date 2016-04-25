@@ -29,12 +29,6 @@ module.exports = {
 };
 
 function minifyJS() {
-  var pipeline = makePipe();
-
-  return pipeline;
-}
-
-function makePipe() {
   var stream = lazypipe()
     .pipe(function () {
       return gulpIf(config.addSourceMaps, sourcemaps.init());
