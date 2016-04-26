@@ -24,11 +24,11 @@ module.exports = {
       config = handyman.mergeConf(config, options);
     }
 
-    return minifyJS();
+    return pipelineFactory();
   }
 };
 
-function minifyJS() {
+function pipelineFactory() {
   var stream = lazypipe()
     .pipe(function () {
       return gulpIf(config.addSourceMaps, sourcemaps.init());
