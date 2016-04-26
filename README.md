@@ -21,17 +21,19 @@ Also, as part of a repo migration, version 0.2.0 will not install, so please use
 ## Usage
 ```javascript
 var gulp = require('gulp');
-var minifyPipeline = require('pipeline-minify-js')();
+var minifyPipeline = require('pipeline-minify-js');
 
 
 gulp.task('default', function() {
   return gulp
     .src(['src/**/*.js'])
-    .pipe(minifyPipeline.minifyJS());
+    .pipe(minifyPipeline.minifyJS())
+    .pipe(gulp.dest('dist'));
 });
 ```
 
 ## Options
+Options will be passed as an object on minifyJS(), ex: _minifyPipeline.minifyJS({concat: false})_;
 
 Pipeline options:
 * _config_ -> Object that contains the configuration.
