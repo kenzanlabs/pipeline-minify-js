@@ -30,19 +30,19 @@ module.exports = {
 
 function pipelineFactory() {
   var stream = lazypipe()
-        .pipe(function () {
-          return gulpIf(config.addSourceMaps, sourcemaps.init());
-        })
-        .pipe(uglify, config.plugins.uglify)
-        .pipe(function () {
-          return gulpIf(!config.concat, rename({extname: '.min.js'}));
-        })
-        .pipe(function () {
-          return gulpIf(config.concat, concat(config.concatFilename));
-        })
-        .pipe(function () {
-          return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
-        });
+    .pipe(function () {
+      return gulpIf(config.addSourceMaps, sourcemaps.init());
+    })
+    .pipe(uglify, config.plugins.uglify)
+    .pipe(function () {
+      return gulpIf(!config.concat, rename({extname: '.min.js'}));
+    })
+    .pipe(function () {
+      return gulpIf(config.concat, concat(config.concatFilename));
+    })
+    .pipe(function () {
+      return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
+      });
 
   return stream();
 }
