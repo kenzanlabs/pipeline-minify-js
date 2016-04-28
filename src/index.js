@@ -24,7 +24,7 @@ module.exports = {
       handyman.log('Minifying with custom options');
       config = handyman.mergeConf(config, options);
     }
-
+    
     return pipelineFactory();
   }
 };
