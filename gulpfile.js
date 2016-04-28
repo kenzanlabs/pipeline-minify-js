@@ -2,7 +2,7 @@
 
 var del = require('del');
 var gulp = require('gulp');
-var minifyPipeline = require('./src/index.js')();
+var minifyPipeline = require('./src/index.js');
 var testPipeline = require('pipeline-test-node')();
 var validatePipeline = require('pipeline-validate-js')();
 

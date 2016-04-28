@@ -21,7 +21,7 @@ Also, as part of a repo migration, version 0.2.0 will not install, so please use
 ## Usage
 ```javascript
 var gulp = require('gulp');
-var minifyPipeline = require('pipeline-minify-js')();
+var minifyPipeline = require('pipeline-minify-js');
 
 
 gulp.task('default', function() {
@@ -58,6 +58,18 @@ Pipeline options:
     uglify: {}  //default options
   }
   ```  
+  
+when passing options use the following format:
+
+```
+
+gulp.task('default', function() {
+  return gulp
+    .src(['src/**/*.js'])
+    .pipe(minifyPipeline.minifyJS({ addSourceMaps: false, concat: true,}));
+});
+
+```
 
 ## Results
 

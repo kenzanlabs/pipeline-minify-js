@@ -17,7 +17,7 @@ describe('pipeline-minify-js', function() {
     it('Should output two files after concatenation; Minified file and sourcemap', function (done) {
       gulp
         .src(getFixtures('*'))
-        .pipe(minifyPipeline().minifyJS())
+        .pipe(minifyPipeline.minifyJS())
         .pipe(assert.length(2))
         .pipe(assert.first(function (file) {
           var filename = handyman.getPackageName() + '.min.js.map';
@@ -34,7 +34,7 @@ describe('pipeline-minify-js', function() {
     it('Should generate only the minified file', function (done) {
       gulp
         .src(getFixtures('*'))
-        .pipe(minifyPipeline({addSourceMaps: false, concat: true}).minifyJS())
+        .pipe(minifyPipeline.minifyJS({addSourceMaps: false, concat: true}))
         .pipe(assert.length(1))
         .pipe(assert.end(done));
     });
@@ -42,7 +42,7 @@ describe('pipeline-minify-js', function() {
     it('Should output the same number of files minified', function (done) {
       gulp
         .src(getFixtures('*'))
-        .pipe(minifyPipeline({addSourceMaps: false, concat: false}).minifyJS())
+        .pipe(minifyPipeline.minifyJS({addSourceMaps: false, concat: false}))
         .pipe(assert.length(2))
         .pipe(assert.end(done));
     });
@@ -50,7 +50,7 @@ describe('pipeline-minify-js', function() {
     it('Should output the same number of files minified and the map for each one', function (done) {
       gulp
         .src(getFixtures('*'))
-        .pipe(minifyPipeline({addSourceMaps: true, concat: false}).minifyJS())
+        .pipe(minifyPipeline.minifyJS({addSourceMaps: true, concat: false}))
         .pipe(assert.length(4))
         .pipe(assert.end(done));
     });
@@ -60,11 +60,11 @@ describe('pipeline-minify-js', function() {
 
       gulp
         .src(getFixtures('*'))
-        .pipe(minifyPipeline({
+        .pipe(minifyPipeline.minifyJS({
           addSourceMaps: true,
           concat: true,
           concatFilename: customFilename
-        }).minifyJS())
+        }))
         .pipe(assert.length(2))
         .pipe(assert.first(function (file) {
           var path = customFilename + '.map';

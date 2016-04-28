@@ -18,34 +18,32 @@ var config = {
   }
 };
 
-module.exports = buildPipeline;
+module.exports = {
+  minifyJS: function(options) {
+    if (options) {
+      handyman.log('Minifying with custom options');
+      config = handyman.mergeConf(config, options);
+    }
 
-function buildPipeline(options) {
-
-  options = options || {};
-  config = handyman.mergeConf(config, options);
-
-  var pipeline = {
-    minifyJS: minifyJS()
-  };
-
-  return pipeline;
-
-  function minifyJS() {
-    return lazypipe()
-      .pipe(function () {
-        return gulpIf(config.addSourceMaps, sourcemaps.init());
-      })
-      .pipe(uglify, config.plugins.uglify)
-      .pipe(function () {
-        return gulpIf(!config.concat, rename({extname: '.min.js'}));
-      })
-      .pipe(function () {
-        return gulpIf(config.concat, concat(config.concatFilename));
-      })
-      .pipe(function () {
-        return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
-      });
+    return pipelineFactory();
   }
-}
+};
 
+function pipelineFactory() {
+  var stream = lazypipe()
+        .pipe(function () {
+          return gulpIf(config.addSourceMaps, sourcemaps.init());
+        })
+        .pipe(uglify, config.plugins.uglify)
+        .pipe(function () {
+          return gulpIf(!config.concat, rename({extname: '.min.js'}));
+        })
+        .pipe(function () {
+          return gulpIf(config.concat, concat(config.concatFilename));
+        })
+        .pipe(function () {
+          return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
+        });
+
+  return stream();
+}
