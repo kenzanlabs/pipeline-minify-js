@@ -6,12 +6,13 @@ var handyman = require('pipeline-handyman');
 var lazypipe = require('lazypipe');
 var sourcemaps = require('gulp-sourcemaps');
 var uglify = require('gulp-uglify');
+var rename = require('gulp-rename');
 
 var config = {
   addSourceMaps: true,
   concat: true,
   concatFilename: handyman.getPackageName() + '.min.js',
-  concatOutput: './dest/',
+  concatOutput: '.',
   plugins: {
     uglify: {}
   }
@@ -36,6 +37,9 @@ function buildPipeline(options) {
         return gulpIf(config.addSourceMaps, sourcemaps.init());
       })
       .pipe(uglify, config.plugins.uglify)
+      .pipe(function () {
+        return gulpIf(!config.concat, rename({extname: '.min.js'}));
+      })
       .pipe(function () {
         return gulpIf(config.concat, concat(config.concatFilename));
       })
