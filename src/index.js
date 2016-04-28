@@ -13,7 +13,6 @@ var config = {
   concat: true,
   concatFilename: handyman.getPackageName() + '.min.js',
   concatOutput: './maps',
-  setOptn: true,
   plugins: {
     uglify: {}
   }
@@ -43,7 +42,7 @@ function pipelineFactory() {
       return gulpIf(config.concat, concat(config.concatFilename));
     })
     .pipe(function () {
-      return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
+      return gulpIf(config.addSourceMaps, sourcemaps.write('.'));
     });
 
   return stream();
