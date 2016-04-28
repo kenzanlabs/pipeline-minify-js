@@ -11,7 +11,7 @@ var config = {
   addSourceMaps: true,
   concat: true,
   concatFilename: handyman.getPackageName() + '.min.js',
-  concatOutput: './dest/',
+  concatOutput: '.',
   plugins: {
     uglify: {}
   }
