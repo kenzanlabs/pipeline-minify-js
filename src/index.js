@@ -42,7 +42,7 @@ function pipelineFactory() {
     })
     .pipe(function () {
       return gulpIf(config.addSourceMaps, sourcemaps.write(config.concatOutput));
-      });
+    });
 
   return stream();
 }
