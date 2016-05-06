@@ -5,14 +5,11 @@
 
 | Package       | Description   | Version|
 | ------------- |:-------------:| -----:|
-| pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 0.4.1 |
+| pipeline-minify-js| This pipeline minifies and optionally concatenates js files | 1.0.0 |
 
 # Overview
 
 Gulp pipeline for minifiying JS and optionally concatenating the output.
-
-**NOTE: as this project is still pre 1.0.0, it is subject to possible backwards incompatible changes as it matures.
-Also, as part of a repo migration, version 0.2.0 will not install, so please use any of the newer versions**
 
 ## Install
 
