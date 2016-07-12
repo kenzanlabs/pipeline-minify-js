@@ -21,6 +21,7 @@ describe('pipeline-minify-js', function() {
         .pipe(assert.length(2))
         .pipe(assert.first(function (file) {
           var filename = handyman.getPackageName() + '.min.js.map';
+          
           expect(file.relative.toString()).to.equal(filename);
         }))
         .pipe(assert.last(function (file) {
@@ -68,6 +69,7 @@ describe('pipeline-minify-js', function() {
         .pipe(assert.length(2))
         .pipe(assert.first(function (file) {
           var path = customFilename + '.map';
+          
           expect(file.relative.toString()).to.equal(path);
         }))
         .pipe(assert.last(function (file) {
