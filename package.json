@@ -48,7 +48,7 @@
     "gulp-sourcemaps": "1.6.0",
     "gulp-uglify": "1.4.1",
     "lazypipe": "1.0.1",
-    "pipeline-handyman": "0.3.0"
+    "pipeline-handyman": "1.0.0"
   },
   "devDependencies": {
     "chai": "3.4.0",

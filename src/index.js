@@ -22,7 +22,7 @@ module.exports = {
   minifyJS: function(options) {
     if (options) {
       handyman.log('Minifying with custom options');
-      config = handyman.mergeConf(config, options);
+      config = handyman.mergeConfig(config, options);
     }
     return pipelineFactory();
   }
