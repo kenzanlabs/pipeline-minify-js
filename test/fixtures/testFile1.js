@@ -1,3 +1,5 @@
 'use strict';
 
-console.log('FILE 1');
+var handyman = require('pipeline-handyman');
+
+handyman.log('FILE 1');
