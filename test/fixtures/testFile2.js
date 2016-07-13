@@ -2,4 +2,4 @@
 
 var handyman = require('pipeline-handyman');
 
-handyman.log('FILE 1');
+handyman.log('FILE 2');
