@@ -30,6 +30,7 @@ module.exports = {
 
 function pipelineFactory() {
   var stream = lazypipe()
+
     .pipe(function () {
       return gulpIf(config.addSourceMaps, sourcemaps.init());
     })

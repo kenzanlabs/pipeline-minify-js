@@ -3,8 +3,8 @@
 var del = require('del');
 var gulp = require('gulp');
 var minifyPipeline = require('./src/index.js');
-var testPipeline = require('pipeline-test-node')();
-var validatePipeline = require('pipeline-validate-js')();
+var testPipeline = require('pipeline-test-node');
+var validatePipeline = require('pipeline-validate-js');
 
 var config = {
   jsFiles: [
