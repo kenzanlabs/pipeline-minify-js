@@ -1,12 +1,11 @@
 'use strict';
 
-var del = require('del');
-var gulp = require('gulp');
-var minifyPipeline = require('./src/index.js');
-var testPipeline = require('pipeline-test-node');
-var validatePipeline = require('pipeline-validate-js');
-
-var config = {
+const del = require('del');
+const gulp = require('gulp');
+const minifyPipeline = require('./src/index.js');
+const testPipeline = require('pipeline-test-node');
+const validatePipeline = require('pipeline-validate-js');
+const config = {
   jsFiles: [
     '*/.js',
     'src/**/*.js',
@@ -14,22 +13,21 @@ var config = {
   ]
 };
 
-gulp.task('clean', function () {
+gulp.task('clean', () => {
   return del.sync([
     './dest/**'
   ]);
 });
 
-gulp.task('validate', function() {
+gulp.task('validate', () => {
   return gulp
     .src(config.jsFiles)
     .pipe(validatePipeline.validateJS())
     .pipe(testPipeline.test());
 });
 
-gulp.task('build', ['clean', 'validate'] , function() {
-
+gulp.task('build', ['clean', 'validate'] , () => {
   return gulp
     .src(config.jsFiles)
-    .pipe(minifyPipeline.minifyJS());
+    .pipe(minifyPipeline.minifyJS({es6: true}));
 });
