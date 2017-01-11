@@ -1,82 +1,104 @@
 'use strict';
 
-var assert = require('stream-assert');
-var expect = require('chai').expect;
-var gulp = require('gulp');
-var handyman = require('pipeline-handyman');
-var minifyPipeline = require('../src/index.js');
-var path = require('path');
+const assert = require('stream-assert');
+const { expect } = require('chai');
+const gulp = require('gulp');
+const handyman = require('pipeline-handyman');
+const minifyPipeline = require('../src/index.js');
+const path = require('path');
 
 function getFixtures(glob) {
   return path.join(__dirname, 'fixtures', glob);
 }
 
-describe('pipeline-minify-js', function() {
+describe('pipeline-minify-js', () => {
 
-  describe('Default Configuration', function() {
-    it('Should output two files after concatenation; Minified file and sourcemap', function (done) {
+  describe('Default Configuration', () => {
+    it('Should output two files after concatenation; Minified file and sourcemap', (done) => {
       gulp
-        .src(getFixtures('*'))
+        .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS())
         .pipe(assert.length(2))
-        .pipe(assert.first(function (file) {
-          var filename = handyman.getPackageName() + '.min.js.map';
-          
+        .pipe(assert.first((file) => {
+          const filename = handyman.getPackageName() + '.min.js.map';
+
           expect(file.relative.toString()).to.equal(filename);
         }))
-        .pipe(assert.last(function (file) {
+        .pipe(assert.last((file) => {
           expect(file.relative.toString()).to.equal(handyman.getPackageName() + '.min.js');
         }))
         .pipe(assert.end(done));
     });
   });
 
-  describe('User specific configurations', function() {
-    it('Should generate only the minified file', function (done) {
+  describe('User specific configurations', () => {
+    it('Should generate only the minified file', (done) => {
       gulp
-        .src(getFixtures('*'))
+        .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS({addSourceMaps: false, concat: true}))
         .pipe(assert.length(1))
         .pipe(assert.end(done));
     });
 
-    it('Should output the same number of files minified', function (done) {
+    it('Should output the same number of files minified', (done) => {
       gulp
-        .src(getFixtures('*'))
+        .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS({addSourceMaps: false, concat: false}))
         .pipe(assert.length(2))
         .pipe(assert.end(done));
     });
 
-    it('Should output the same number of files minified and the map for each one', function (done) {
+    it('Should output the same number of files minified and the map for each one', (done) => {
       gulp
-        .src(getFixtures('*'))
+        .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS({addSourceMaps: true, concat: false}))
         .pipe(assert.length(4))
         .pipe(assert.end(done));
     });
 
-    it('Should output custom min and map files', function (done) {
-      var customFilename = 'test/filename.js';
+    it('Should output custom min and map files', (done) => {
+      const customFilename = 'test/filename.js';
 
       gulp
-        .src(getFixtures('*'))
+        .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS({
           addSourceMaps: true,
           concat: true,
           concatFilename: customFilename
         }))
         .pipe(assert.length(2))
-        .pipe(assert.first(function (file) {
-          var path = customFilename + '.map';
-          
+        .pipe(assert.first((file) => {
+          const path = customFilename + '.map';
+
           expect(file.relative.toString()).to.equal(path);
         }))
-        .pipe(assert.last(function (file) {
+        .pipe(assert.last((file) => {
           expect(file.relative.toString()).to.equal(customFilename);
         }))
         .pipe(assert.end(done));
     });
-  });
 
+    it('should check for es6 options with correct config option', (done) => {
+      const customFilename = 'test/filename.js';
+
+      gulp
+        .src(getFixtures('./es6/*'))
+        .pipe(minifyPipeline.minifyJS({
+          es6: true,
+          addSourceMaps: true,
+          concat: true,
+          concatFilename: customFilename
+        }))
+        .pipe(assert.first((file) => {
+          const path = customFilename + '.map';
+
+          expect(file.relative.toString()).to.equal(path);
+        }))
+        .pipe(assert.last((file) => {
+          expect(file.relative.toString()).to.equal(customFilename);
+        }))
+        .pipe(assert.end(done));
+    });
+
+  });
 });
