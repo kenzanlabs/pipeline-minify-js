@@ -16,15 +16,31 @@ Gulp pipeline for minifiying JS and optionally concatenating the output.
 `npm install pipeline-minify-js --save-dev`
 
 ## Usage
-```javascript
+
+### Case Es5
+
+```
 var gulp = require('gulp');
 var minifyPipeline = require('pipeline-minify-js');
-
 
 gulp.task('default', function() {
   return gulp
     .src(['src/**/*.js'])
     .pipe(minifyPipeline.minifyJS());
+});
+
+```
+
+### Case Es6
+
+``` 
+var gulp = require('gulp');
+var minifyPipeline = require('pipeline-minify-js');
+
+gulp.task('default', function() {
+  return gulp
+    .src(['src/**/*.js'])
+    .pipe(minifyPipeline.minifyJS({es6: true}));
 });
 ```
 
@@ -46,20 +62,22 @@ Pipeline options:
 
 
   Default:
-  ```javascript
+  
+  ``` 
   config = {
+  	es6: false,
     addSourceMaps: true,
     concat: true,
     concatFilename: '{package-name}.min.js',
     concatOutput: './',
     uglify: {}  //default options
   }
+  
   ```  
   
 when passing options use the following format:
 
 ```
-
 gulp.task('default', function() {
   return gulp
     .src(['src/**/*.js'])
