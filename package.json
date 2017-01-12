@@ -35,6 +35,7 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
+  "engineStrict": true,
   "engines": {
     "node": ">=6.9.0",
     "npm": ">=3.8.0"
