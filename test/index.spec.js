@@ -48,7 +48,7 @@ describe('pipeline-minify-js', () => {
         .pipe(assert.end(done));
     });
 
-    it('Should output the same number of files minified and the map for each one', (done) => {
+    it('Should output the correct number of files minified when addSourceMaps set to true', (done) => {
       gulp
         .src(getFixtures('./es5/*'))
         .pipe(minifyPipeline.minifyJS({addSourceMaps: true, concat: false}))

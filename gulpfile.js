@@ -22,11 +22,16 @@ gulp.task('clean', () => {
 gulp.task('validate', () => {
   return gulp
     .src(config.jsFiles)
-    .pipe(validatePipeline.validateJS())
+    .pipe(validatePipeline.validateJS());
+});
+
+gulp.task('test', ['validate'],() => {
+  return gulp
+    .src(config.jsFiles)
     .pipe(testPipeline.test());
 });
 
-gulp.task('build', ['clean', 'validate'] , () => {
+gulp.task('build', ['clean', 'test'] , () => {
   return gulp
     .src(config.jsFiles)
     .pipe(minifyPipeline.minifyJS({es6: true}));

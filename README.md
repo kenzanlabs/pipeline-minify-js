@@ -17,7 +17,7 @@ Gulp pipeline for minifiying JS and optionally concatenating the output.
 
 ## Usage
 
-### Case Es5
+### Case ES5
 
 ```
 var gulp = require('gulp');
@@ -31,7 +31,7 @@ gulp.task('default', function() {
 
 ```
 
-### Case Es6
+### Case ES6
 
 ``` 
 var gulp = require('gulp');
