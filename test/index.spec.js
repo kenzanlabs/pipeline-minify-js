@@ -1,7 +1,7 @@
 'use strict';
 
 const assert = require('stream-assert');
-const { expect } = require('chai');
+const expect = require('chai').expect;
 const gulp = require('gulp');
 const handyman = require('pipeline-handyman');
 const minifyPipeline = require('../src/index.js');
