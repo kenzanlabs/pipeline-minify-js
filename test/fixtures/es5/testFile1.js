@@ -8,5 +8,5 @@ var setName = function (id, name) {
   };
 };
 
-handyman.log('FILE 1');
+handyman.slugify('FILE 1');
 setName(1, 'Jon');
