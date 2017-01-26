@@ -1,5 +1,6 @@
 'use strict';
 
 var handyman = require('pipeline-handyman');
+var name = 'Random name';
 
-handyman.log('FILE 2');
+handyman.slugify(name);

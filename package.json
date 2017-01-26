@@ -35,13 +35,15 @@
   "publishConfig": {
     "registry": "http://registry.npmjs.org/"
   },
+  "engineStrict": true,
   "engines": {
-    "node": ">=0.10.3",
-    "npm": ">=1.0.20"
+    "node": ">=6.9.0",
+    "npm": ">=3.8.0"
   },
   "analyze": true,
   "license": "Apache-2.0",
   "dependencies": {
+    "gulp-babel": "6.1.2",
     "gulp-concat": "2.6.1",
     "gulp-if": "2.0.2",
     "gulp-rename": "1.2.2",
@@ -51,6 +53,7 @@
     "pipeline-handyman": "1.0.0"
   },
   "devDependencies": {
+    "babel-preset-babili": "0.0.9",
     "chai": "3.5.0",
     "del": "2.2.2",
     "gulp": "3.9.1",

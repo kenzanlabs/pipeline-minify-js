@@ -16,17 +16,6 @@ Gulp pipeline for minifiying JS and optionally concatenating the output.
 `npm install pipeline-minify-js --save-dev`
 
 ## Usage
-```javascript
-var gulp = require('gulp');
-var minifyPipeline = require('pipeline-minify-js');
-
-
-gulp.task('default', function() {
-  return gulp
-    .src(['src/**/*.js'])
-    .pipe(minifyPipeline.minifyJS());
-});
-```
 
 ## Options
 
@@ -42,30 +31,30 @@ Pipeline options:
   * __concatOutput:__ Sets the path to where the sourcemaps are written to; set to next to reference file, by default. If wanted to have a separate folder for map files, just change this to a desire folder name.
     
   * __uglify:__ Uglifies JS files using the basic [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) configuration.
+  
+  * __es6:__ Specifies the Javascript version used, ES5 by default (es6: false). When set to true, it uses babel to compile ES6 to ES5.
     
 
 
   Default:
-  ```javascript
+  
+  ``` 
   config = {
+    es6: false,
     addSourceMaps: true,
     concat: true,
     concatFilename: '{package-name}.min.js',
     concatOutput: './',
     uglify: {}  //default options
   }
+  
   ```  
   
 when passing options use the following format:
 
 ```
-
-gulp.task('default', function() {
-  return gulp
-    .src(['src/**/*.js'])
-    .pipe(minifyPipeline.minifyJS({ addSourceMaps: false, concat: true,}));
-});
-
+minifyPipeline.minifyJS({ addSourceMaps: false, concat: true,});
+minifyPipeline.minifyJS(config);
 ```
 
 ## Results
